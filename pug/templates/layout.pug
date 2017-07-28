@@ -10,7 +10,8 @@ html(lang="ja")
 			link(rel="stylesheet", href="/cthulhu-scenarios/main.css")
 	body
 		#container
-			header#header
-				h1= title
+			unless noheader
+				header#header
+					h1= title
 			#main
 				block contents
