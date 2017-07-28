@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>事実と記録、真実の記憶 - マップ 二階～四階</title>
+    <meta name="description" content="クトゥルフ神話TRPGのシナリオ。">
+    <meta name="author" content="F_">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <div id="container">
+      <header id="header">
+        <h1>事実と記録、真実の記憶</h1>
+      </header>
+      <div id="main">
+        <article class="map" id="contents">
+          <header>
+            <h1>二階～四階</h1>
+          </header>
+          <figure>
+            <svg width="0" height="0">
+              <defs>
+                <symbol id="arc1" overflow="visible" viewBox="0 0 75 75">
+                  <path d="M 0 0 H 75 A 75 75 0 0 1 0 75 V 0 Z"></path>
+                </symbol>
+                <symbol id="arc2" overflow="visible" viewBox="0 0 75 75">
+                  <path d="M 75 0 V 75 A 75 75 0 0 1 0 0 H 75 Z"></path>
+                </symbol>
+                <symbol id="arc3" overflow="visible" viewBox="0 0 75 75">
+                  <path d="M 75 75 H 0 A 75 75 0 0 1 75 0 V 75 Z"></path>
+                </symbol>
+                <symbol id="arc4" overflow="visible" viewBox="0 0 75 75">
+                  <path d="M 0 75 V 0 A 75 75 0 0 1 75 75 H 0 Z"></path>
+                </symbol>
+                <symbol id="lock" overflow="visible" viewBox="0 0 100 100">
+                  <rect x="10" y="30" width="80" height="60"></rect>
+                  <path d="M 30 30 A 20 15 0 0 1 70 30"></path>
+                  <circle class="fill" cx="50" cy="50" r="10"></circle>
+                  <path d="M 50 60 v 25 m 0 -15 h 15"></path>
+                </symbol>
+                <marker id="arrow" viewBox="0 0 100 100" refX="0" refY="50" markerWidth="10" markerHeight="10" orient="auto">
+                  <path class="fill" d="M 0 0 L 100 50 L 0 100 Z"></path>
+                </marker>
+              </defs>
+            </svg>
+            <svg class="layout" overflow="visible" viewBox="0 0 2500 2500"><a href="#elevator">
+                <g class="area">
+                  <path d="M 400 2100 v 200 h -400 v -200 h 300"></path>
+                  <rect x="150" y="2300" width="100" height="50"></rect>
+                  <use x="400" y="2150" width="75" height="75" href="#arc4"></use>
+                  <use x="450" y="2050" width="100" height="100" href="#lock"></use>
+                </g></a><a href="#stairs">
+                <g class="area">
+                  <path d="M 300 2100 h -300 v -500 h 400 v 500 M 50 1600 v 500 m 50 -500 v 500 m 50 -500 v 500 m 50 -500 v 500 m 50 -500 v 500 m 50 -500 v 500 m 0 -250 h -300"></path>
+                  <path d="M 100 1700 h 200" marker-end="url(#arrow)"></path>
+                  <path d="M 350 2000 h -200" marker-end="url(#arrow)"></path>
+                </g></a><a href="#floor">
+                <g class="area">
+                  <rect x="400" y="0" width="1700" height="2300"></rect>
+                </g></a></svg>
+          </figure>
+          <section id="elevator">
+            <header>
+              <h2>エレベーター前</h2>
+            </header>
+            <p>
+              フロアに入るための扉があり、電子錠によって施錠されている。
+              どのような方法を使っても絶対に開くことはない。
+            </p>
+            <p>エレベーターについては<a href="./map_1.html#elevator">一階のマップ</a>を参照。</p>
+          </section>
+          <section id="stairs">
+            <header>
+              <h2>階段</h2>
+            </header>
+            <p>四階のみ上り階段がなく、手すりがついているだけとなっている。</p>
+          </section>
+          <section id="floor">
+            <header>
+              <h2>フロア全体</h2>
+            </header>
+            <p>入り口が施錠されているため、侵入不可。</p>
+            <p>内部は実験用の設備があるという設定。</p>
+          </section>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

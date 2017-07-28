@@ -1,0 +1,89 @@
+extends /00/layout.pug
+
+block append variables
+	- var page = "クリーチャー"
+
+block contents
+	article#contents.creature
+		header: h1 クリーチャー
+		section
+			header: h2 クトーニアン
+			p.
+				第４脱皮段階のクトーニアン。
+				成長段階のため、テレパシーや地震の発生は限定的にしか使えない。
+				テレパシーは強く何かに恐怖しているような精神的に不安定な相手にしか効かない。
+			section
+				header: h3 能力値
+				p.
+					ロールはルールブック準拠、固定値はダメージボーナス低めの調整。
+				table
+					thead
+						tr
+							th
+							th ロール
+							th 固定値
+					tbody
+						tr
+							th STR
+							th 3D6 x 4
+							th 24
+						tr
+							th CON
+							th 3D6 + 25
+							th 40
+						tr
+							th SIZ
+							th 3D6 x 4
+							th 32
+						tr
+							th INT
+							th 5D6
+							th 16
+						tr
+							th POW
+							th 4D6
+							th 17
+						tr
+							th DEX
+							th 2D6
+							th 6
+						tr
+							th 耐久力
+							th -
+							th 36
+						tr
+							th ダメージボーナス
+							th -
+							th 2D6
+						tr
+							th 移動
+							th(colspan="2") 6 （穴掘り時1）
+						tr
+							th 最大温度
+							th(colspan="2") 1500℃
+						tr
+							th 耐久力再生
+							th(colspan="2") 4
+						tr
+							th 装甲
+							th(colspan="2") 4
+						tr
+							th 正気度消失
+							th(colspan="2") 1/1D10
+			section
+				header: h3 攻撃
+				p.
+					触肢 75%。ダメージはダメージボーナスの半分（切り捨て）。
+					ラウンドにつき1D8回攻撃できる。ただし、使用中の触肢がある場合にはその数だけ減少させる。
+					攻撃に成功した場合にはそのまま犠牲者の主要器官へと入り込み、吸血ができる。
+					シナリオ上の特殊ルールとして、攻撃成功時に壁などに叩きつけ、対象にCONx1のロールで気絶回避判定を行わせてもよい。
+				p.
+					吸血。ラウンドごとに対象のCONを1D6減少。
+					触肢攻撃成功時に移行可能。
+				p.
+					押しつぶし 80%。ダメージはダメージボーナス同じ、かつダメージボーナスが乗る。
+					回避ロールまたは跳躍ロールで回避可能。
+					SIZの10で割った値と同じメートル数の範囲を攻撃。
+			section
+				header: h3 呪文
+				p 呪文は覚えていない。

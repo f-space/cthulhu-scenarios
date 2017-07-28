@@ -1,0 +1,16 @@
+doctype html
+block variables
+html(lang="ja")
+	head
+		meta(charset="utf-8")
+		title #{title} - #{page}
+		meta(name="description",content=description)
+		meta(name="author", content="F_")
+		block css
+			link(rel="stylesheet", href="/main.css")
+	body
+		#container
+			header#header
+				h1= title
+			#main
+				block contents

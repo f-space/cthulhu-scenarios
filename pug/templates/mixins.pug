@@ -1,0 +1,19 @@
+mixin line(speaker, palette)
+	p.line(data-speaker=speaker, data-palette=palette)&attributes(attributes)
+		block
+
+mixin direction(palette)
+	p.direction(data-palette=palette)&attributes(attributes)
+		block
+
+mixin narrative(palette)
+	p.narrative(data-palette=palette)&attributes(attributes)
+		block
+
+mixin conditional(label, palette)
+	.conditional
+		- var id = Buffer.from(label).toString('base64');
+		input(id=id, type="checkbox")
+		label(for=id, data-palette=palette)&attributes(attributes)= label
+		.pane
+			block

@@ -1,0 +1,40 @@
+extends /00/layout.pug
+
+block append variables
+	- var page = "アイテム"
+
+block contents
+	article#contents.item
+		header: h1 アイテム
+		section#chat-ae
+			header: h2 AmeliaとEmmaのチャット
+		section#chat-ce
+			header: h2 CarloとEmmaのチャット
+		section#mail-d
+			header: h2 Davidから各研究員へのメール内容
+		section#mail-bd
+			header: h2 BenjaminとDavidのメール内容
+		section#memo
+			header: h2 会議室に落ちていたメモ
+		section#geode
+			header: h2 鉱物に関する調査記録
+		section#mucus
+			header: h2 GSQWの粘液に関する実験記録
+			//- 掠れた風切り音について言及
+		section#tissue
+			header: h2 GSWQの組織に関する実験記録
+		section#report
+			header: h2 GSQW研究報告書
+			//- Ameliaに対するテレパシー支配の可能性を示唆
+		section#plan
+			header: h2 移送計画書
+			//- 緊急時の対応として消火栓と施設図の存在を示唆
+		section#egg
+			header: h2 クトーニアンの卵
+			p.
+				晶洞石（ジオード）のような球形の鉱物に似ている。
+				直径30cm弱で厚さ5~8cmの殻に覆われている。
+			p.
+				クトーニアンは卵を発見すると奪取し、守ろうとする。
+		section#letter
+			header: h2 Amelia宛のラブレターの下書き
