@@ -1,4 +1,4 @@
-extends /00/layout
+extends ../../../templates/00/layout
 
 block append variables
 	- var page = "マップ 二階～四階"
@@ -7,7 +7,7 @@ block contents
 	article#contents.map
 		header: h1 二階～四階
 		figure
-			include /00/svg
+			include ../../../templates/00/svg
 			svg(class="layout", overflow="visible", viewBox="0 0 2500 2500")
 				a(href="#elevator")
 					g.area
@@ -29,7 +29,7 @@ block contents
 				フロアに入るための扉があり、電子錠によって施錠されている。
 				どのような方法を使っても絶対に開くことはない。
 			p.
-				エレベーターについては#[a(href="./map_1.html#elevator") 一階のマップ]を参照。
+				エレベーターについては#[a(href="./map_1.pug#elevator") 一階のマップ]を参照。
 		section#stairs
 			header: h2 階段
 			p.

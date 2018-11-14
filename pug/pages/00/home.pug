@@ -1,4 +1,4 @@
-extends /00/layout
+extends ../../templates/00/layout
 
 block append variables
 	- var page = "ホーム"
@@ -8,10 +8,10 @@ block contents
 		header: h1 メニュー
 		nav
 			ul
-				li: a(href="./introduction.html") イントロダクション
-				li: a(href="./system.html") システム
-				li: a(href="./script.html") スクリプト
-				li: a(href="./map.html") マップ
-				li: a(href="./character.html") キャラクター
-				li: a(href="./creature.html") クリーチャー
-				li: a(href="./item.html") アイテム
+				li: a(href="./introduction.pug") イントロダクション
+				li: a(href="./system.pug") システム
+				li: a(href="./script.pug") スクリプト
+				li: a(href="./map.pug") マップ
+				li: a(href="./character.pug") キャラクター
+				li: a(href="./creature.pug") クリーチャー
+				li: a(href="./item.pug") アイテム

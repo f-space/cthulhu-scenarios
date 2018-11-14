@@ -1,4 +1,4 @@
-extends /00/layout
+extends ../../../templates/00/layout
 
 block append variables
 	- var page = "マップ 地下二階"
@@ -7,7 +7,7 @@ block contents
 	article#contents.map
 		header: h1 地下二階
 		figure
-			include /00/svg
+			include ../../../templates/00/svg
 			svg(class="layout", overflow="visible", viewBox="0 0 2500 2500")
 				a(href="#stairs")
 					g.area
@@ -102,9 +102,9 @@ block contents
 				目星ロールやその他それらしい技能ロールに成功すれば、
 				サーバに接続されている端子のひとつが外れていることがわかる。
 				端子を接続すると、各研究員の端末から
-				#[a(href="../item.html#geode") 鉱物に関する調査記録]、
-				#[a(href="../item.html#mucus") GSQWの粘液に関する実験記録]、
-				#[a(href="../item.html#tissue") GSQWの組織に関する実験記録]のデータにアクセスすることができるようになる。
+				#[a(href="../item.pug#geode") 鉱物に関する調査記録]、
+				#[a(href="../item.pug#mucus") GSQWの粘液に関する実験記録]、
+				#[a(href="../item.pug#tissue") GSQWの組織に関する実験記録]のデータにアクセスすることができるようになる。
 		section#storage_room
 			header: h2 物置
 			p.

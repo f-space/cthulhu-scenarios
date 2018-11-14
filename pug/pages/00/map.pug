@@ -1,4 +1,4 @@
-extends /00/layout
+extends ../../templates/00/layout
 
 block append variables
 	- var page = "マップ"
@@ -8,8 +8,8 @@ block contents
 		header: h1 マップ
 		nav
 			ul
-				li: a(href="./maps/notes.html") 注意事項
-				li: a(href="./maps/map_b2.html") 地下二階
-				li: a(href="./maps/map_b1.html") 地下一階
-				li: a(href="./maps/map_1.html") 一階
-				li: a(href="./maps/map_2-4.html") 二階～四階
+				li: a(href="./maps/notes.pug") 注意事項
+				li: a(href="./maps/map_b2.pug") 地下二階
+				li: a(href="./maps/map_b1.pug") 地下一階
+				li: a(href="./maps/map_1.pug") 一階
+				li: a(href="./maps/map_2-4.pug") 二階～四階

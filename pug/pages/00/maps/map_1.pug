@@ -1,4 +1,4 @@
-extends /00/layout
+extends ../../../templates/00/layout
 
 block append variables
 	- var page = "マップ 一階"
@@ -7,7 +7,7 @@ block contents
 	article#contents.map
 		header: h1 一階
 		figure
-			include /00/svg
+			include ../../../templates/00/svg
 			svg(class="layout", overflow="visible", viewBox="0 0 2500 2500")
 				a(href="#entrance")
 					g.area
