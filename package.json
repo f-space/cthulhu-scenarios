@@ -1,21 +1,16 @@
 {
 	"name": "cthulhu-scenarios",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
 	"scripts": {
-		"compile:ejs": "node compile-ejs.js",
-		"watch": "run-p watch:*",
-		"watch:html": "pug pug/pages --out scenario --basedir pug/templates --pretty --watch",
-		"watch:css": "node-sass scss/main.scss main.css --output-style compressed --watch"
+		"start": "parcel ./index.html --public-url /cthulhu-scenarios/",
+		"build": "parcel build ./index.html --public-url /cthulhu-scenarios/ --out-dir docs"
 	},
-	"keywords": [],
 	"author": "F_",
 	"license": "MIT",
-	"dependencies": {
-		"npm-run-all": "^4.0.2",
-		"stylelint": "^8.0.0",
-		"stylelint-config-standard": "^17.0.0",
-		"stylelint-order": "^0.6.0"
+	"dependencies": {},
+	"devDependencies": {
+		"parcel": "^1.10.3",
+		"pug": "^2.0.3",
+		"sass": "^1.14.3"
 	}
 }
