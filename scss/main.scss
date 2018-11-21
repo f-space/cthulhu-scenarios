@@ -48,18 +48,19 @@
 	}
 
 	thead, tbody {
-		& > tr:first-of-type > th, & > th {
+		& > tr:first-of-type {
 			border-top: solid 1px black;
 		}
 
-		& > tr:last-of-type > th, & > th {
+		& > tr:last-of-type {
 			border-bottom: solid 1px black;
 		}
 	}
 
-	th {
+	th, td {
 		padding-right: 0.5em;
 		padding-left: 0.5em;
+		text-align: center;
 	}
 }
 
