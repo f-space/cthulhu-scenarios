@@ -1,5 +1,8 @@
+$black: #333;
+
 :root {
 	line-height: 1.6;
+	color: $black;
 }
 
 #container {
@@ -17,7 +20,7 @@
 #header {
 	flex: 0 0 auto;
 	overflow: hidden;
-	border-bottom: solid 1px black;
+	border-bottom: solid 1px $black;
 	text-align: center;
 
 	h1 {
@@ -34,7 +37,7 @@
 	margin: 0 auto 5em;
 	padding-bottom: 1em;
 	max-width: 600px;
-	border-bottom: double 3px black;
+	border-bottom: double 3px $black;
 
 	h1, h2, h3, h4, h5, h6 {
 		text-align: center;
@@ -49,11 +52,11 @@
 
 	thead, tbody {
 		& > tr:first-of-type {
-			border-top: solid 1px black;
+			border-top: solid 1px $black;
 		}
 
 		& > tr:last-of-type {
-			border-bottom: solid 1px black;
+			border-bottom: solid 1px $black;
 		}
 	}
 
@@ -66,7 +69,7 @@
 
 .introduction {
 	.story > .content {
-		border: solid 1px black;
+		border: solid 1px $black;
 		border-radius: 1em;
 		text-align: center;
 		line-height: 2.5;
@@ -92,15 +95,15 @@
 	.direction {
 		margin: 1em 0;
 		padding: 1em 1em;
-		border: solid 1px black;
+		border: solid 1px $black;
 		border-radius: 1em;
 	}
 
 	.conditional {
 		margin: 1ex 0;
 		padding: 1ex 0;
-		border-top: dashed 1px black;
-		border-bottom: dashed 1px black;
+		border-top: dashed 1px $black;
+		border-bottom: dashed 1px $black;
 
 		input[type="checkbox"] {
 			display: none;
