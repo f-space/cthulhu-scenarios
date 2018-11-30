@@ -1,4 +1,4 @@
-module Route exposing (Route(..), parseUrl)
+module Route exposing (Route(..), parseUrl, transformUrl)
 
 import S00.Main as S00
 import Url
@@ -22,4 +22,19 @@ router =
 
 parseUrl : Url.Url -> Route
 parseUrl url =
-    Maybe.withDefault NotFound <| parse router url
+    parse router url
+        |> Maybe.withDefault NotFound
+
+
+transformUrl : Url.Url -> Url.Url
+transformUrl url =
+    { url | path = normalizePath url.path }
+
+
+normalizePath : String -> String
+normalizePath path =
+    if String.endsWith "/" path then
+        path
+
+    else
+        path ++ "/"

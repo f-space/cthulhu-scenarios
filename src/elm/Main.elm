@@ -6,7 +6,7 @@ import Context exposing (Context)
 import Home
 import Html exposing (..)
 import NotFound
-import Route exposing (Route, parseUrl)
+import Route exposing (Route, parseUrl, transformUrl)
 import S00.Main as S00
 import Url
 
@@ -49,45 +49,18 @@ getContext model =
             S00.getContext m
 
 
-getKey : Model -> Nav.Key
-getKey =
-    getContext >> .key
-
-
-normalizeUrl : Url.Url -> String
-normalizeUrl url =
-    let
-        path =
-            if String.endsWith "/" url.path then
-                url.path
-
-            else
-                url.path ++ "/"
-    in
-    Url.toString { url | path = path }
-
-
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    reset (Context key) (parseUrl url)
-        |> Tuple.mapSecond (\_ -> Nav.replaceUrl key (normalizeUrl url))
-
-
-reset : Context -> Route -> ( Model, Cmd Msg )
-reset context route =
     let
         model =
-            case route of
-                Route.NotFound ->
-                    NotFound (NotFound.init context)
+            Context key
+                |> NotFound.init
+                |> NotFound
 
-                Route.Home ->
-                    Home (Home.init context)
-
-                Route.S00 r ->
-                    S00 (S00.init context r)
+        msg =
+            UrlRequested (Browser.Internal url)
     in
-    ( model, Cmd.none )
+    update msg model
 
 
 view : Model -> Browser.Document Msg
@@ -106,7 +79,7 @@ view model =
 docmap : (a -> msg) -> Browser.Document a -> Browser.Document msg
 docmap fn doc =
     { title = doc.title
-    , body = doc.body |> List.map (\e -> Html.map fn e)
+    , body = List.map (\e -> Html.map fn e) doc.body
     }
 
 
@@ -116,13 +89,25 @@ update msg model =
         ( UrlRequested request, _ ) ->
             case request of
                 Browser.Internal url ->
-                    ( model, Nav.pushUrl (getKey model) (normalizeUrl url) )
+                    let
+                        key =
+                            .key <| getContext model
+
+                        to =
+                            Url.toString <| transformUrl url
+                    in
+                    case model of
+                        NotFound _ ->
+                            ( model, Nav.replaceUrl key to )
+
+                        _ ->
+                            ( model, Nav.pushUrl key to )
 
                 Browser.External href ->
                     ( model, Nav.load href )
 
         ( UrlChanged url, _ ) ->
-            update (RouteChanged <| parseUrl <| url) model
+            update (RouteChanged <| parseUrl url) model
 
         ( RouteChanged route, _ ) ->
             goto model route
@@ -137,17 +122,30 @@ update msg model =
 
 goto : Model -> Route -> ( Model, Cmd Msg )
 goto model route =
-    let
-        context =
-            getContext model
-    in
     case ( route, model ) of
         ( Route.S00 r, S00 m ) ->
             S00.update (S00.RouteChanged r) m
                 |> Tuple.mapBoth S00 (Cmd.map S00Msg)
 
         _ ->
-            reset context route
+            reset (getContext model) route
+
+
+reset : Context -> Route -> ( Model, Cmd Msg )
+reset context route =
+    let
+        model =
+            case route of
+                Route.NotFound ->
+                    NotFound (NotFound.init context)
+
+                Route.Home ->
+                    Home (Home.init context)
+
+                Route.S00 r ->
+                    S00 (S00.init context r)
+    in
+    ( model, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
