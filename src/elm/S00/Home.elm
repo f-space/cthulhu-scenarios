@@ -5,20 +5,47 @@ import Html as E exposing (Html, text)
 import Html.Attributes as A
 
 
+type alias Navigation =
+    List NavItem
+
+
+type alias NavItem =
+    { href : String
+    , label : String
+    }
+
+
+navigation : Navigation
+navigation =
+    [ { href = "introduction"
+      , label = "イントロダクション"
+      }
+    , { href = "system"
+      , label = "システム"
+      }
+    , { href = "script"
+      , label = "スクリプト"
+      }
+    , { href = "map"
+      , label = "マップ"
+      }
+    , { href = "character"
+      , label = "キャラクター"
+      }
+    , { href = "creature"
+      , label = "クリーチャー"
+      }
+    , { href = "item"
+      , label = "アイテム"
+      }
+    ]
+
+
 view : Document msg
 view =
     Document "ホーム"
         [ content "メニュー"
-            [ menu
-                [ item "introduction" "イントロダクション"
-                , item "system" "システム"
-                , item "script" "スクリプト"
-                , item "map" "マップ"
-                , item "character" "キャラクター"
-                , item "creature" "クリーチャー"
-                , item "item" "アイテム"
-                ]
-            ]
+            [ menu <| List.map item navigation ]
         ]
 
 
@@ -33,6 +60,6 @@ menu =
     E.ul [] >> List.singleton >> E.nav []
 
 
-item : String -> String -> Html msg
-item href label =
+item : NavItem -> Html msg
+item { href, label } =
     E.li [] [ E.a [ A.href href ] [ text label ] ]

@@ -1,8 +1,56 @@
-module S00.Script.Utility exposing (article, branch, conditional, direction, line, narrative, ol, oldman, p, section, ul, zack)
+module S00.Script.Utility exposing (Script, Speaker(..), Statement(..), article, conditional, line, markdown, viewLine, viewScript, viewStatement)
 
 import Html as E exposing (Html, text)
 import Html.Attributes as A
+import Markdown
 import Url
+
+
+type alias Script =
+    List Statement
+
+
+type Statement
+    = If String (List Statement)
+    | Direction String
+    | Narrative String
+    | Line Speaker String
+
+
+type Speaker
+    = Zack
+    | Oldman
+
+
+viewScript : Script -> List (Html msg)
+viewScript =
+    List.map viewStatement
+
+
+viewStatement : Statement -> Html msg
+viewStatement statement =
+    case statement of
+        If label section ->
+            conditional "2" label <| viewScript section
+
+        Direction content ->
+            E.p [ A.class "direction" ] [ text content ]
+
+        Narrative content ->
+            E.p [ A.class "narrative" ] [ text content ]
+
+        Line speaker content ->
+            viewLine speaker content
+
+
+viewLine : Speaker -> String -> Html msg
+viewLine speaker content =
+    case speaker of
+        Zack ->
+            line "0" "Zack" content
+
+        Oldman ->
+            line "1" "老人" content
 
 
 article : String -> List (Html msg) -> Html msg
@@ -11,55 +59,9 @@ article heading =
         >> E.article [ A.id "contents", A.class "script" ]
 
 
-section : String -> List (Html msg) -> Html msg
-section heading =
-    (::) (E.h2 [] [ text heading ])
-        >> E.section []
-
-
-p : String -> Html msg
-p =
-    text >> List.singleton >> E.p []
-
-
-ul : List String -> Html msg
-ul =
-    List.map (text >> List.singleton >> E.li []) >> E.ul []
-
-
-ol : List String -> Html msg
-ol =
-    List.map (text >> List.singleton >> E.li []) >> E.ol []
-
-
-zack : String -> Html msg
-zack =
-    line "0" "Zack"
-
-
-oldman : String -> Html msg
-oldman =
-    line "1" "老人"
-
-
 line : String -> String -> String -> Html msg
 line palette speaker =
     text >> List.singleton >> E.p [ A.class "line", A.attribute "data-palette" palette, A.attribute "data-speaker" speaker ]
-
-
-direction : String -> Html msg
-direction =
-    text >> List.singleton >> E.p [ A.class "direction" ]
-
-
-narrative : String -> Html msg
-narrative =
-    text >> List.singleton >> E.p [ A.class "narrative" ]
-
-
-branch : String -> List (Html msg) -> Html msg
-branch =
-    conditional "2"
 
 
 conditional : String -> String -> List (Html msg) -> Html msg
@@ -73,3 +75,8 @@ conditional palette label children =
         , E.label [ A.for id, A.attribute "data-palette" palette ] [ text label ]
         , E.div [ A.class "pane" ] children
         ]
+
+
+markdown : String -> List (Html msg)
+markdown =
+    Markdown.toHtml Nothing
