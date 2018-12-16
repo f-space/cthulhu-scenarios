@@ -1,9 +1,20 @@
 import { Elm } from "./elm/Main.elm";
 
 if (document.readyState !== 'loading') {
-	Elm.Main.init();
+	init();
 } else {
 	document.addEventListener("DOMContentLoaded", () => {
-		Elm.Main.init();
+		init()
+	});
+}
+
+function init() {
+	const app = Elm.Main.init();
+
+	app.ports.scrollTo.subscribe(function (id) {
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView();
+		}
 	});
 }

@@ -1,14 +1,18 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
 import Context exposing (Context)
 import Home
 import Html exposing (..)
+import Json.Encode as E
 import NotFound
 import Route exposing (Route, parseUrl, transformUrl)
 import S00.Main as S00
 import Url
+
+
+port scrollTo : E.Value -> Cmd msg
 
 
 main : Program () Model Msg
@@ -33,7 +37,9 @@ type Msg
     = UrlRequested Browser.UrlRequest
     | UrlChanged Url.Url
     | RouteChanged Route
+    | FragmentChanged (Maybe String)
     | S00Msg S00.Msg
+    | Nop
 
 
 getContext : Model -> Context
@@ -107,10 +113,28 @@ update msg model =
                     ( model, Nav.load href )
 
         ( UrlChanged url, _ ) ->
-            update (RouteChanged <| parseUrl url) model
+            let
+                ( route, fragment ) =
+                    parseUrl url
+
+                ( m1, cmd1 ) =
+                    update (RouteChanged route) model
+
+                ( m2, cmd2 ) =
+                    update (FragmentChanged fragment) m1
+            in
+            ( m2, Cmd.batch [ cmd1, cmd2 ] )
 
         ( RouteChanged route, _ ) ->
             goto model route
+
+        ( FragmentChanged fragment, _ ) ->
+            case fragment of
+                Just id ->
+                    ( model, scrollTo (E.string id) )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
         ( S00Msg smsg, S00 m ) ->
             S00.update smsg m
