@@ -3,10 +3,10 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "parcel ./index.html --public-url /cthulhu-scenarios/",
-		"build": "parcel build ./index.html --public-url /cthulhu-scenarios/ --out-dir docs --no-source-maps"
+		"build": "parcel build ./index.html --public-url /cthulhu-scenarios/ --out-dir docs --out-file 404.html --no-source-maps"
 	},
 	"author": "F_",
-	"license": "MIT",
+	"license": "MIT AND CC-BY-NC-4.0",
 	"dependencies": {},
 	"devDependencies": {
 		"elm-hot": "^1.0.1",
