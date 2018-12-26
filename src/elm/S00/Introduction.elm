@@ -7,14 +7,14 @@ import Markdown
 
 
 type alias Introduction =
-    { prologue : String
+    { story : String
     , note : String
     }
 
 
 introduction : Introduction
 introduction =
-    { prologue = """
+    { story = """
 １月、カリフォルニア州。  
 長雨の続く陰鬱な日々に一件のニュースが舞い込んだ。
 
@@ -33,17 +33,15 @@ introduction =
 時代は現代。
 探索者たちはハルクース研究所へと立ち入り、その内部を探索する。
 
-探索者たちの立場はなんであってもかまわない。
-許可を得て研究所内部を調べる捜査員でもいいし、
-人がいないのをいいことに金目のものを盗む火事場泥棒のような者でもいい。
-ただし、全ての探索者は共通の目的を持ち、行動をともにしていることが望ましい。
+探索者たちの立場に制限はない。
+許可を得て研究所内部を調べる捜査員でも、
+人がいないのをいいことに金目のものを盗む火事場泥棒のような者でもよい。
+ただし、研究所内を隈なく調べる目的を持っていなければならない。
+また、全ての探索者は行動をともにしている必要がある。
 
 持ち物に特に制限はない。
-探索者の背景に沿った範囲で自由に持ち込むこと。
-ただし、持ち物によってはシナリオをひどく単純化させ、つまらないものにする可能性がある。
-難解さよりも雰囲気を重視したシナリオのため、
-クリア目的の便利な道具よりも、探索者のキャラクター性を引き立たせる目的の小道具をおすすめする。
-もちろん、何も持っていなくてもかまわない。
+探索者の背景に沿った範囲で自由に持ち込んでよい。
+ただし、シナリオのクリアを目的とした道具の持ち込みは推奨しない。
 """
     }
 
@@ -55,8 +53,8 @@ view =
 
 
 viewIntroduction : Introduction -> List (Html msg)
-viewIntroduction { prologue, note } =
-    [ section "あらすじ" [ E.div [ A.class "prologue" ] <| markdown prologue ]
+viewIntroduction { story, note } =
+    [ section "物語" [ E.div [ A.class "story" ] <| markdown story ]
     , section "設定" <| markdown note
     ]
 

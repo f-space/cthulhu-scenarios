@@ -73,10 +73,10 @@ viewTop =
             [ nav
                 [ ul
                     [ link "notes" "注意事項"
-                    , link "b2f" "地下二階"
-                    , link "b1f" "地下一階"
-                    , link "1f" "一階"
                     , link "2-4f" "二階～四階"
+                    , link "1f" "一階"
+                    , link "b1f" "地下一階"
+                    , link "b2f" "地下二階"
                     ]
                 ]
             ]

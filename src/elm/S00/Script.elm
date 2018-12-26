@@ -12,12 +12,12 @@ import S00.Script.Prologue as Prologue
 import S00.Script.Section1 as Section1
 import S00.Script.Section2 as Section2
 import S00.Script.Section3 as Section3
-import S00.Script.Synopsis as Synopsis
+import S00.Script.Summary as Summary
 import Url.Parser exposing (Parser, map, oneOf, s, top)
 
 
 type Route
-    = Synopsis
+    = Summary
     | Prologue
     | Section1
     | Interlude1
@@ -33,7 +33,7 @@ router : Parser (Maybe Route -> a) a
 router =
     oneOf
         [ map Nothing top
-        , map (Just Synopsis) (s "synopsis")
+        , map (Just Summary) (s "summary")
         , map (Just Prologue) (s "prologue")
         , map (Just Section1) (s "section1")
         , map (Just Interlude1) (s "interlude1")
@@ -60,8 +60,8 @@ viewChildren : Route -> Document msg
 viewChildren route =
     decorate <|
         case route of
-            Synopsis ->
-                Synopsis.view
+            Summary ->
+                Summary.view
 
             Prologue ->
                 Prologue.view
@@ -102,13 +102,13 @@ viewTop =
         [ content "スクリプト"
             [ nav
                 [ ul
-                    [ link "synopsis" "梗概"
+                    [ link "summary" "あらすじ"
                     , link "prologue" "序幕"
-                    , link "section1" "研究所へ"
+                    , link "section1" "「研究所へ」"
                     , link "interlude1" "幕間１"
-                    , link "section2" "怪物の襲来"
+                    , link "section2" "「怪物の襲来」"
                     , link "interlude2" "幕間２"
-                    , link "section3" "決戦"
+                    , link "section3" "「決戦」"
                     , link "epilogue" "終幕"
                     , link "appendixA" "付録Ａ 残された謎"
                     , link "appendixB" "付録Ｂ 設定集"
