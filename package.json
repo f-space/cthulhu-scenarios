@@ -9,6 +9,7 @@
 	"license": "MIT",
 	"dependencies": {},
 	"devDependencies": {
+		"elm-hot": "^1.0.1",
 		"node-elm-compiler": "^5.0.1",
 		"parcel": "^1.11.0",
 		"sass": "^1.15.2"
