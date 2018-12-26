@@ -10,7 +10,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"node-elm-compiler": "^5.0.1",
-		"parcel": "^1.10.3",
-		"sass": "^1.14.3"
+		"parcel": "^1.11.0",
+		"sass": "^1.15.2"
 	}
 }
