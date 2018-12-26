@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "parcel ./index.html --public-url /cthulhu-scenarios/",
-		"build": "parcel build ./index.html --public-url /cthulhu-scenarios/ --out-dir docs"
+		"build": "parcel build ./index.html --public-url /cthulhu-scenarios/ --out-dir docs --no-source-maps"
 	},
 	"author": "F_",
 	"license": "MIT",
